@@ -1,0 +1,13 @@
+<ion-item (click)="getProduct(item.sku)">
+  <ion-avatar slot="start">
+    <img [src]="item.image" alt="product image">
+  </ion-avatar>
+  <ion-label>
+    <div class="product_title__name">
+      {{item.name}}
+    </div>
+    <div class="product_title__description">
+      {{item.description}}
+    </div>
+  </ion-label>
+</ion-item>

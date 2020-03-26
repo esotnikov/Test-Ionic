@@ -1,0 +1,14 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Searchbar</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      #searchText
+      color="dark"
+      type="text"
+      debounce="500"
+      (ionChange)="getSearch(searchText.value)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>

@@ -1,3 +1,31 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.card {
+    display: flex;
+    align-items: center;
+    .product_img {
+        img {
+            min-width: 40px;
+            max-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+    }
+    .product_img {
+        padding: 10px 10px;
+    }
+    .product_title {
+        border-bottom: 1px solid #808080;
+        overflow: hidden;
+        padding: 10px 10px 10px 0;
+        
+    } 
+}
+
+.product_title__description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
