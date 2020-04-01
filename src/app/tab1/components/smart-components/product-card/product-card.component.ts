@@ -15,6 +15,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   product$: Product;
   productId: string;
   cardFrom: FormGroup;
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
