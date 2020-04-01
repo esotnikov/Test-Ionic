@@ -1,0 +1,24 @@
+.list {
+    display: flex;
+}
+
+.title {
+    color: black;
+}
+
+.price {
+    color: black;
+    font-weight: 600;
+    font-size: 18px
+}
+
+.group_btn {
+    display: flex;
+    .amount_btn, .quantity_btn {
+        display: flex;
+    }
+}
+
+.card {
+    overflow: auto;
+}

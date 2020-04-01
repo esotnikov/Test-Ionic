@@ -1,0 +1,39 @@
+<app-btn-back></app-btn-back>
+<ion-card class="card" *ngIf="product$">
+    <img [src]="product$.image" />
+    <ion-card-header>
+        <ion-card-title class="title">{{product$.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <div class="price">
+            <span>Price: {{product$.price}}</span>
+        </div>
+        <div class="description">
+            <span>{{product$.description}}</span>
+        </div>
+        <div class="group_btn">
+            <div class="amount_btn">
+                <ion-button size="small" color="primary" (click)="addAmount(100)">$100</ion-button>
+                <ion-button size="small" color="primary" (click)="addAmount(10)">$10</ion-button>
+            </div>
+            <div class="quantity_btn">
+                <ion-button size="small" color="primary" (click)="addQuantity(100)">100 qty</ion-button>
+                <ion-button size="small" color="primary" (click)="addQuantity(10)">10 qty</ion-button>
+            </div>
+        </div>
+        <form [formGroup]="cardFrom">
+            <ion-list class="list">
+                <ion-item>
+                    <ion-label position="stacked">Price</ion-label>
+                    <ion-input inputmode="numeric" debounce="600" formControlName="amount" type="number">
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">Quantity</ion-label>
+                    <ion-input debounce="600" formControlName="quantity" type="number">
+                    </ion-input>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-card-content>
+</ion-card>

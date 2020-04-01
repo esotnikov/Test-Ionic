@@ -1,7 +1,10 @@
 <app-search-header></app-search-header>
 <ion-content [fullscreen]="true">
     <ion-list>
-      <app-list-card-item *ngFor="let item of product$ | async" [item]="item"></app-list-card-item>
+      <app-list-card-item
+        *ngFor="let item of product$ | async"
+        [item]="item"
+      ></app-list-card-item>
     </ion-list>
 </ion-content>
 

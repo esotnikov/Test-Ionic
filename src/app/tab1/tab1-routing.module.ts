@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 import { ProductListComponent } from './components/smart-components/product-list/product-list.component';
 import { SearchListComponent } from './components/smart-components/search-list/search-list.component';
-import { ProductCardComponent } from './components/dumb-components/product-card/product-card.component';
+import { ProductCardComponent } from './components/smart-components/product-card/product-card.component';
 
 
 const routes: Routes = [

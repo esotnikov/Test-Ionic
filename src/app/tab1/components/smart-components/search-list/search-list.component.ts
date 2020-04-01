@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../service/product.service';
 import { Product } from '../../../models/product.interface';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
@@ -10,8 +10,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.scss']
 })
-export class SearchListComponent implements OnInit {
-
+export class SearchListComponent implements OnInit, OnDestroy {
+  unsubscribe$ = new Subject<void>();
   product$: Observable<Product[]>;
   id$: Observable<string>;
 
@@ -19,14 +19,14 @@ export class SearchListComponent implements OnInit {
     private productService: ProductService,
     private activeRoute: ActivatedRoute,
     private storage: Storage
-    ) {}
+  ) { }
 
   ngOnInit() {
     this.activeRoute.queryParams.subscribe(param => {
-      if(param.text) {
-        this.searchProducts(param.text);
+      if (param.text || param.text === '') {
         this.setStorage(param.text);
-      } else {
+        this.searchProducts(param.text);
+      } else if (param.text === undefined) {
         this.getStorage();
       }
     });
@@ -39,11 +39,16 @@ export class SearchListComponent implements OnInit {
 
   getStorage() {
     this.storage.get('searchText').then((val) => {
-      this.searchProducts(val)
+      this.searchProducts(val);
     });
   }
 
   searchProducts(name) {
     this.product$ = this.productService.getSearchProducts(name);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
